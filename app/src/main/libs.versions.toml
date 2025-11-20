@@ -1,0 +1,10 @@
+toml
+[versions]
+room = "2.6.1" # Use the latest stable version of Room
+
+[libraries]
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+
+[plugins]
+# ... other plugins
