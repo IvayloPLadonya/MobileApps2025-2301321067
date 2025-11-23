@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mobileapps2025_2301321067.ListFragmentDirections
 import com.example.mobileapps2025_2301321067.R
 import com.example.mobileapps2025_2301321067.data.Exercise
 
@@ -18,6 +20,7 @@ class ExerciseAdapter : RecyclerView.Adapter<ExerciseAdapter.MyViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        // Inflate the custom row
         val view = LayoutInflater.from(parent.context).inflate(R.layout.custom_row, parent, false)
         return MyViewHolder(view)
     }
@@ -26,12 +29,18 @@ class ExerciseAdapter : RecyclerView.Adapter<ExerciseAdapter.MyViewHolder>() {
         val currentItem = exerciseList[position]
         holder.tvName.text = currentItem.name
         holder.tvDetails.text = "${currentItem.sets} sets x ${currentItem.reps} reps @ ${currentItem.weight}kg"
+
+        // Setup the Click Listener
+        holder.itemView.setOnClickListener {
+            // Navigate to UpdateFragment passing the current exercise
+            val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
         return exerciseList.size
     }
-
 
     fun setData(exercise: List<Exercise>) {
         this.exerciseList = exercise

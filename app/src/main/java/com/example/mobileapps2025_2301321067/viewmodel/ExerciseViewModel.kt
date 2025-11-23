@@ -26,6 +26,11 @@ class ExerciseViewModel(application: Application) : AndroidViewModel(application
             repository.addExercise(exercise)
         }
     }
+    fun updateExercise(exercise: Exercise) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateExercise(exercise)
+        }
+    }
 
     fun deleteExercise(exercise: Exercise) {
         viewModelScope.launch(Dispatchers.IO) {
