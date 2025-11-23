@@ -27,6 +27,7 @@ class AddExerciseFragment : Fragment() {
         mExerciseViewModel = ViewModelProvider(this).get(ExerciseViewModel::class.java)
 
         val btnSave = view.findViewById<Button>(R.id.btnSave)
+        val btnBack = view.findViewById<Button>(R.id.btnBack)
         val etName = view.findViewById<EditText>(R.id.etName)
         val etSets = view.findViewById<EditText>(R.id.etSets)
         val etReps = view.findViewById<EditText>(R.id.etReps)
@@ -34,6 +35,10 @@ class AddExerciseFragment : Fragment() {
 
         btnSave.setOnClickListener {
             insertDataToDatabase(etName, etSets, etReps, etWeight)
+        }
+
+        btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
 
         return view
