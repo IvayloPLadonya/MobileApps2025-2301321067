@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mobileapps2025_2301321067.data.Exercise
 import com.example.mobileapps2025_2301321067.viewmodel.ExerciseViewModel
-
+import android.content.Intent
 class UpdateFragment : Fragment() {
 
     private lateinit var mExerciseViewModel: ExerciseViewModel
@@ -34,7 +34,7 @@ class UpdateFragment : Fragment() {
         val etWeight = view.findViewById<EditText>(R.id.etWeightUpdate)
         val btnUpdate = view.findViewById<Button>(R.id.btnUpdate)
         val btnDelete = view.findViewById<Button>(R.id.btnDelete) // Delete Button
-
+        val btnShare = view.findViewById<Button>(R.id.btnShare)
 
         etName.setText(args.currentExercise.name)
         etSets.setText(args.currentExercise.sets.toString())
@@ -49,7 +49,20 @@ class UpdateFragment : Fragment() {
         btnDelete.setOnClickListener {
             deleteUser()
         }
+        btnShare.setOnClickListener {
+            val shareText = "I just crushed this workout: ${args.currentExercise.name}\n" +
+                    "Sets: ${args.currentExercise.sets}\n" +
+                    "Reps: ${args.currentExercise.reps}\n" +
+                    "Weight: ${args.currentExercise.weight}kg"
 
+            val sendIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, shareText)
+                type = "text/plain"
+            }
+            val shareIntent = Intent.createChooser(sendIntent, "Share Workout via")
+            startActivity(shareIntent)
+        }
         return view
     }
 

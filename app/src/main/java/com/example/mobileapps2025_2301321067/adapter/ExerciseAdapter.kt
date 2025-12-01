@@ -20,7 +20,6 @@ class ExerciseAdapter : RecyclerView.Adapter<ExerciseAdapter.MyViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        // Inflate the custom row
         val view = LayoutInflater.from(parent.context).inflate(R.layout.custom_row, parent, false)
         return MyViewHolder(view)
     }
@@ -30,9 +29,8 @@ class ExerciseAdapter : RecyclerView.Adapter<ExerciseAdapter.MyViewHolder>() {
         holder.tvName.text = currentItem.name
         holder.tvDetails.text = "${currentItem.sets} sets x ${currentItem.reps} reps @ ${currentItem.weight}kg"
 
-        // Setup the Click Listener
+
         holder.itemView.setOnClickListener {
-            // Navigate to UpdateFragment passing the current exercise
             val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
             holder.itemView.findNavController().navigate(action)
         }
