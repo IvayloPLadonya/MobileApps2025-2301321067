@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_listFragment_to_addExerciseFragment"
             app:destination="@id/addExerciseFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
     </fragment>
 
     <fragment
@@ -20,4 +23,19 @@
         android:name="com.example.mobileapps2025_2301321067.AddExerciseFragment"
         android:label="AddExerciseFragment"
         tools:layout="@layout/fragment_add_exercise" />
+
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.mobileapps2025_2301321067.UpdateFragment"
+        android:label="UpdateFragment"
+        tools:layout="@layout/fragment_update">
+        <argument
+            android:name="currentExercise"
+            app:argType="com.example.mobileapps2025_2301321067.data.Exercise" />
+        <action
+            android:id="@+id/action_updateFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
