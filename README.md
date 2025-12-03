@@ -52,9 +52,10 @@ The app follows the recommended **MVVM (Model-View-ViewModel)** architecture to 
 5.  **Share:** User taps the card -> Clicks "Share with Friends" -> Selects Messenger -> Sends report.
 
 ## 📸 Screenshots
+
 | Home Screen | Add Exercise | Update & Share |
 | :---: | :---: | :---: |
-| ![Home](docs/images/home.jpg) | ![Add](docs/images/add.jpg) | ![Update](docs/images/update.jpg) |
+| ![Home](docs/home.jpg) | ![Add](docs/add.jpg) | ![Update](docs/update.jpg) |
 
 ## 🏃 Steps to Run
 1.  Clone the repository:
